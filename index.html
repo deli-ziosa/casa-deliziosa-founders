@@ -20,7 +20,7 @@
 
         /* Hero Section with Animation */
         .hero {
-            height: 100vh;
+            height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -175,6 +175,120 @@
             animation: pulse 2s infinite;
         }
 
+        /* Master's Portfolio Section */
+        .portfolio-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .portfolio-content {
+            text-align: center;
+        }
+
+        .portfolio-title {
+            font-size: 3rem;
+            color: #8B0000;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .portfolio-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #8B0000, #A52A2A);
+            border-radius: 2px;
+        }
+
+        .portfolio-subtitle {
+            font-size: 1.3rem;
+            color: #4A332A;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .portfolio-hero {
+            position: relative;
+            margin-bottom: 3rem;
+            display: inline-block;
+        }
+
+        .portfolio-main {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.2);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-main:hover {
+            transform: scale(1.02);
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+            color: #FDF5E6;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(139, 0, 0, 0.25);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item p {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(139, 0, 0, 0.9), transparent);
+            color: #FDF5E6;
+            padding: 1.5rem 1rem 1rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
         /* Interactive Cards Section */
         .benefits-section {
             padding: 5rem 2rem;
@@ -317,14 +431,14 @@
             background: rgba(255, 255, 255, 0.95);
             border-radius: 25px;
             padding: 3rem;
-            box-shadow: 0 15px 35px rgba(211, 47, 47, 0.15);
+            box-shadow: 0 15px 35px rgba(139, 0, 0, 0.15);
             backdrop-filter: blur(10px);
         }
 
         .form-title {
             text-align: center;
             font-size: 2.5rem;
-            color: #D32F2F;
+            color: #8B0000;
             margin-bottom: 2rem;
         }
 
@@ -334,7 +448,7 @@
 
         .form-group label {
             display: block;
-            color: #5D4037;
+            color: #4A332A;
             margin-bottom: 0.5rem;
             font-weight: bold;
         }
@@ -344,26 +458,26 @@
         .form-group select {
             width: 100%;
             padding: 1rem;
-            border: 2px solid #E0E0E0;
+            border: 2px solid #D2B48C;
             border-radius: 12px;
             font-size: 1rem;
             transition: all 0.3s ease;
-            background: rgba(255, 248, 225, 0.5);
+            background: rgba(253, 245, 230, 0.7);
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #D32F2F;
+            border-color: #8B0000;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.2);
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
         }
 
         .submit-btn {
             width: 100%;
-            background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%);
-            color: white;
+            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+            color: #FDF5E6;
             padding: 1.2rem;
             border: none;
             border-radius: 15px;
@@ -382,13 +496,13 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(253,245,230,0.15), transparent);
             transition: left 0.6s ease;
         }
 
         .submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(211, 47, 47, 0.4);
+            box-shadow: 0 10px 25px rgba(139, 0, 0, 0.4);
         }
 
         .submit-btn:hover::before {
@@ -397,13 +511,22 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .hero { height: 90vh; }
             .logo { font-size: 3rem; }
             .tagline { font-size: 1.3rem; }
             .hero-subtitle { font-size: 1.1rem; }
-            .section-title { font-size: 2.2rem; }
+            .portfolio-title, .section-title { font-size: 2.2rem; }
+            .portfolio-main { max-width: 100%; }
+            .portfolio-grid { grid-template-columns: 1fr; }
             .benefit-card { padding: 2rem; }
             .benefits-grid { grid-template-columns: 1fr; }
             .form-container { padding: 2rem; }
+            .invitation-badge { 
+                top: 1rem; 
+                right: 1rem; 
+                font-size: 0.8rem; 
+                padding: 0.6rem 1rem; 
+            }
         }
 
         /* Scroll Animations */
@@ -439,6 +562,30 @@
         </div>
     </section>
 
+    <!-- Master's Portfolio Section -->
+    <section class="portfolio-section">
+        <div class="portfolio-content">
+            <h2 class="portfolio-title fade-in">Master Craftsman Portfolio</h2>
+            <p class="portfolio-subtitle fade-in">25 Years European Mastery - From Tour de France to California Innovation</p>
+            
+            <div class="portfolio-hero fade-in">
+                <img src="./images/tdf2018.jpeg" alt="Official Tour de France 2018 Caterer" class="portfolio-main">
+                <div class="portfolio-badge">Tour de France 2018</div>
+            </div>
+            
+            <div class="portfolio-grid fade-in">
+                <div class="portfolio-item">
+                    <img src="./images/pommes.jpeg" alt="Artisan Pizza with Grilled Peaches">
+                    <p>Artisan Innovation</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./images/burrata.webp" alt="Premium Burrata Pizza">
+                    <p>European Excellence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Benefits Section -->
     <section class="benefits-section">
         <h2 class="section-title fade-in">Founding Member Exclusive Benefits</h2>
@@ -447,13 +594,13 @@
             <div class="benefit-card fade-in">
                 <div class="benefit-icon">🍳</div>
                 <h3 class="benefit-title">Private Culinary Masterclasses</h3>
-                <p class="benefit-description">Monthly exclusive cooking sessions with Chef Juliano. Master advanced European techniques from pasta perfection to sous-vide precision cooking.</p>
+                <p class="benefit-description">Monthly exclusive cooking sessions with Master Juliano. Master advanced European techniques from pasta perfection to sous-vide precision cooking.</p>
             </div>
 
             <div class="benefit-card fade-in">
                 <div class="benefit-icon">🏢</div>
                 <h3 class="benefit-title">Restaurant Consulting Partnership</h3>
-                <p class="benefit-description">Direct access to Chef Juliano's 20+ years of European fusion expertise. Transform your culinary vision with proven techniques and business insights.</p>
+                <p class="benefit-description">Direct access to Master Juliano's 25+ years of European fusion expertise. Transform your culinary vision with proven international techniques and business insights.</p>
             </div>
 
             <div class="benefit-card fade-in">
@@ -486,7 +633,7 @@
     <section class="chef-message">
         <div class="chef-content">
             <p class="chef-quote">"Great restaurants aren't built by chefs alone – they're crafted by communities of passionate people who believe in culinary excellence. As a founding member, you're not just investing in CASA DELIZIOSA; you're helping create the future of European fusion in America."</p>
-            <p class="chef-signature">— Chef Juliano & CASA DELIZIOSA Family</p>
+            <p class="chef-signature">— Master Juliano & CASA DELIZIOSA Family</p>
         </div>
     </section>
 

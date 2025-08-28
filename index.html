@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASA DELIZIOSA - Exclusive Founding Members</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #FFF8E1 0%, #F5F5DC 50%, #FFF8E1 100%);
+            color: #2C2C2C;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section with Animation */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(211, 47, 47, 0.1) 0%, transparent 70%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23D32F2F" opacity="0.1"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            z-index: 10;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 4.5rem;
+            font-weight: bold;
+            color: #D32F2F;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            color: #8B4513;
+            font-style: italic;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #5D4037;
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 1.5s forwards;
+        }
+
+        /* Interactive Cards Section */
+        .benefits-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #D32F2F;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #D32F2F, #FF5722);
+            border-radius: 2px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(211, 47, 47, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(211, 47, 47, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(211, 47, 47, 0.2);
+        }
+
+        .benefit-card:hover::before {
+            left: 100%;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: #D32F2F;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .benefit-title {
+            font-size: 1.5rem;
+            color: #2C2C2C;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .benefit-description {
+            color: #5D4037;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Chef's Message Section */
+        .chef-message {
+            background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%);
+            color: white;
+            padding: 5rem 2rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chef-message::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path d="M30,10 Q40,20 30,30 Q20,40 30,50 Q40,40 30,30 Q20,20 30,10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .chef-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .chef-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .chef-signature {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 5rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(211, 47, 47, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #D32F2F;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #5D4037;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 248, 225, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #D32F2F;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(211, 47, 47, 0.4);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo { font-size: 3rem; }
+            .tagline { font-size: 1.3rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .section-title { font-size: 2.2rem; }
+            .benefit-card { padding: 2rem; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .form-container { padding: 2rem; }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="logo">CASA DELIZIOSA</h1>
+            <p class="tagline">"European Culinary Mastery, One Dish at a Time"</p>
+            <p class="hero-subtitle">Join the visionary founders shaping the future of European fusion cuisine in California. Become part of our exclusive founding circle.</p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <h2 class="section-title fade-in">Founding Member Exclusive Benefits</h2>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">🍳</div>
+                <h3 class="benefit-title">Private Culinary Masterclasses</h3>
+                <p class="benefit-description">Monthly exclusive cooking sessions with Chef Juliano. Master advanced European techniques from pasta perfection to sous-vide precision cooking.</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">🏢</div>
+                <h3 class="benefit-title">Restaurant Consulting Partnership</h3>
+                <p class="benefit-description">Direct access to Chef Juliano's 20+ years of European fusion expertise. Transform your culinary vision with proven techniques and business insights.</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">⚡</div>
+                <h3 class="benefit-title">Co-Creation Opportunities</h3>
+                <p class="benefit-description">Collaborate on menu development and help shape CASA DELIZIOSA's expansion. Your input directly influences our culinary journey.</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">💎</div>
+                <h3 class="benefit-title">Priority Investment Access</h3>
+                <p class="benefit-description">First access to expansion opportunities and franchise development. Join our journey from artisan kitchen to European culinary empire.</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">🌟</div>
+                <h3 class="benefit-title">Lifetime VIP Status</h3>
+                <p class="benefit-description">Permanent priority reservations, exclusive menu tastings, and special events. Your founding member status opens doors forever.</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">📈</div>
+                <h3 class="benefit-title">Business Growth Network</h3>
+                <p class="benefit-description">Connect with fellow food entrepreneurs and industry leaders. Build valuable relationships within our founding community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef's Message Section -->
+    <section class="chef-message">
+        <div class="chef-content">
+            <p class="chef-quote">"Great restaurants aren't built by chefs alone – they're crafted by communities of passionate people who believe in culinary excellence. As a founding member, you're not just investing in CASA DELIZIOSA; you're helping create the future of European fusion in America."</p>
+            <p class="chef-signature">— Chef Juliano & CASA DELIZIOSA Family</p>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="form-section">
+        <div class="form-container fade-in">
+            <h2 class="form-title">Join Our Founding Circle</h2>
+            <form id="foundingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="business">Current Business/Background</label>
+                    <input type="text" id="business" name="business" placeholder="Restaurant owner, food enthusiast, entrepreneur...">
+                </div>
+
+                <div class="form-group">
+                    <label for="interest">Your Interest Level *</label>
+                    <select id="interest" name="interest" required>
+                        <option value="">Select your primary interest...</option>
+                        <option value="culinary-learning">Culinary Learning & Masterclasses</option>
+                        <option value="restaurant-consulting">Restaurant Consulting Partnership</option>
+                        <option value="investment-opportunity">Investment & Expansion Opportunities</option>
+                        <option value="menu-collaboration">Menu Co-Creation & Development</option>
+                        <option value="franchise-development">Franchise Development</option>
+                        <option value="all-benefits">All Founding Member Benefits</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="vision">Your Vision for CASA DELIZIOSA</label>
+                    <textarea id="vision" name="vision" rows="4" placeholder="Share your thoughts on European fusion cuisine and how you'd like to contribute to our journey..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="investment-level">Preferred Involvement Level *</label>
+                    <select id="investment-level" name="investment-level" required>
+                        <option value="">Choose your commitment level...</option>
+                        <option value="advisor">Advisor - Strategic guidance and networking</option>
+                        <option value="active-partner">Active Partner - Regular collaboration and consulting</option>
+                        <option value="investor-partner">Investor Partner - Financial investment + advisory role</option>
+                        <option value="franchise-partner">Franchise Partner - Multi-location development</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Reserve My Founding Position
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Scroll animations
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function isElementPartiallyInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+            return (rect.top <= windowHeight * 0.8 && rect.bottom >= 0);
+        }
+
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                if (isElementPartiallyInViewport(el)) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        // Form enhancements
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('foundingForm');
+            const inputs = form.querySelectorAll('input, select, textarea');
+            
+            // Add focus animations
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'translateX(5px)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'translateX(0)';
+                });
+            });
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Animate submit button
+                const submitBtn = form.querySelector('.submit-btn');
+                submitBtn.innerHTML = 'Processing Your Application...';
+                submitBtn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = '✓ Application Submitted Successfully!';
+                    setTimeout(() => {
+                        submitBtn.innerHTML = 'Reserve My Founding Position';
+                        submitBtn.style.background = 'linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%)';
+                    }, 3000);
+                }, 2000);
+                
+                // Here you would normally submit to your backend
+                console.log('Form submitted:', new FormData(form));
+            });
+
+            // Initial scroll check
+            handleScrollAnimations();
+        });
+
+        // Scroll event listener
+        window.addEventListener('scroll', handleScrollAnimations);
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

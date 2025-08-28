@@ -403,7 +403,11 @@
     <section class="form-section">
         <div class="form-container fade-in">
             <h2 class="form-title">Join Our Founding Circle</h2>
-            <form id="foundingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <form id="foundingForm" name="founding-members" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="founding-members" />
+<div style="display: none;">
+  <input name="bot-field" />
+</div>
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required>

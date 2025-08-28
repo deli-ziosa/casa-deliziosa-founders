@@ -88,10 +88,91 @@
             font-size: 1.3rem;
             color: #5D4037;
             max-width: 600px;
-            margin: 0 auto 3rem auto;
+            margin: 0 auto 2rem auto;
             line-height: 1.6;
             opacity: 0;
             animation: fadeInUp 2s ease-out 1.5s forwards;
+        }
+
+        .hero-cta {
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 2s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(211, 47, 47, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .launch-countdown {
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            background: rgba(211, 47, 47, 0.1);
+            border-radius: 25px;
+            border: 2px solid rgba(211, 47, 47, 0.2);
+            display: inline-block;
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 2.3s forwards;
+        }
+
+        .launch-text {
+            color: #D32F2F;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .countdown-timer {
+            color: #B71C1C;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 0.5rem 0 0 0;
+        }
+
+        .invitation-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+            z-index: 20;
+            animation: pulse 2s infinite;
         }
 
         /* Interactive Cards Section */
@@ -117,7 +198,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: linear-gradient(90deg, #D32F2F, #FF5722);
+            background: linear-gradient(90deg, #D32F2F, #B71C1C);
             border-radius: 2px;
         }
 
@@ -341,10 +422,20 @@
 <body>
     <!-- Hero Section -->
     <section class="hero">
+        <div class="invitation-badge">🎯 INVITATION ONLY</div>
         <div class="hero-content">
             <h1 class="logo">CASA DELIZIOSA</h1>
             <p class="tagline">"European Culinary Mastery, One Dish at a Time"</p>
             <p class="hero-subtitle">Join the visionary founders shaping the future of European fusion cuisine in California. Become part of our exclusive founding circle.</p>
+            
+            <div class="hero-cta">
+                <a href="#founding-form" class="cta-button">Join Our Founding Circle</a>
+            </div>
+            
+            <div class="launch-countdown">
+                <p class="launch-text">Official Launch In</p>
+                <p class="countdown-timer" id="countdown-display">10 Days</p>
+            </div>
         </div>
     </section>
 
@@ -400,7 +491,7 @@
     </section>
 
     <!-- Application Form -->
-    <section class="form-section">
+    <section class="form-section" id="founding-form">
         <div class="form-container fade-in">
             <h2 class="form-title">Join Our Founding Circle</h2>
             <form id="foundingForm" name="founding-members" method="POST" data-netlify="true" netlify-honeypot="bot-field">
@@ -465,6 +556,49 @@
     </section>
 
     <script>
+        // Launch countdown functionality
+        function updateCountdown() {
+            const launchDate = new Date();
+            launchDate.setDate(launchDate.getDate() + 10); // Set launch to 10 days from today
+            
+            // Store launch date in localStorage to persist across sessions
+            if (!localStorage.getItem('casaDelizioso_launchDate')) {
+                localStorage.setItem('casaDelizioso_launchDate', launchDate.toISOString());
+            }
+            
+            const storedLaunchDate = new Date(localStorage.getItem('casaDelizioso_launchDate'));
+            const now = new Date();
+            const timeDifference = storedLaunchDate - now;
+            const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+            
+            const countdownElement = document.getElementById('countdown-display');
+            if (countdownElement) {
+                if (daysRemaining > 0) {
+                    countdownElement.textContent = `${daysRemaining} Days`;
+                } else {
+                    countdownElement.textContent = "LAUNCHED!";
+                    countdownElement.style.color = '#4CAF50';
+                }
+            }
+        }
+
+        // Smooth scroll for CTA button
+        function setupSmoothScroll() {
+            const ctaButton = document.querySelector('.cta-button');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector('#founding-form');
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            }
+        }
+
         // Scroll animations
         function isElementInViewport(el) {
             const rect = el.getBoundingClientRect();
@@ -493,6 +627,12 @@
 
         // Form enhancements
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize countdown
+            updateCountdown();
+            
+            // Setup smooth scroll
+            setupSmoothScroll();
+            
             const form = document.getElementById('foundingForm');
             const inputs = form.querySelectorAll('input, select, textarea');
             
@@ -531,6 +671,9 @@
                 });
             });
         });
+
+        // Update countdown daily
+        setInterval(updateCountdown, 24 * 60 * 60 * 1000); // Update once per day
     </script>
 </body>
 </html>

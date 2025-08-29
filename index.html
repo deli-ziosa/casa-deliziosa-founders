@@ -12,8 +12,7 @@
         }
 
         // PREMIUM SUCCESS EXPERIENCE - AVANT-GARDE VISUAL
-        function replaceFormWithSuccessExperience() {
-            const formContainer = document.querySelector('.form-container');
+        function replaceFormWithSuccessExperience(formContainer) {
             
             // Smooth transition out
             formContainer.style.transition = 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -1680,9 +1679,17 @@
                         submitBtn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
                         showWebhookMessage(successMessage, 'success');
                         
-                        // Replace form with premium success experience
+                        // HIDE form completely and replace with success experience
                         setTimeout(() => {
-                            replaceFormWithSuccessExperience();
+                            const formContainer = document.querySelector('.form-container');
+                            formContainer.style.transition = 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+                            formContainer.style.transform = 'translateY(-30px)';
+                            formContainer.style.opacity = '0';
+                            formContainer.style.filter = 'blur(10px)';
+                            
+                            setTimeout(() => {
+                                replaceFormWithSuccessExperience(formContainer);
+                            }, 600);
                         }, 2000);
                         
                     } else if (response.status === 400) {

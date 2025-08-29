@@ -12,8 +12,16 @@
         }
 
         // PREMIUM SUCCESS EXPERIENCE - AVANT-GARDE VISUAL
-        function replaceFormWithSuccessExperience(formContainer) {
-            // Form is already hidden, now replace content
+        function replaceFormWithSuccessExperience() {
+            const formContainer = document.querySelector('.form-container');
+            
+            // First, fade out the current form
+            formContainer.style.transition = 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+            formContainer.style.transform = 'translateY(-30px)';
+            formContainer.style.opacity = '0';
+            formContainer.style.filter = 'blur(10px)';
+            
+            // Wait for fade out, then replace content
             setTimeout(() => {
                 formContainer.innerHTML = `
                     <div class="success-experience" style="
@@ -1673,18 +1681,10 @@
                         submitBtn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
                         showWebhookMessage(successMessage, 'success');
                         
-                        // HIDE form completely and replace with success experience
+                        // Replace form with premium success experience after message closes
                         setTimeout(() => {
-                            const formContainer = document.querySelector('.form-container');
-                            formContainer.style.transition = 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
-                            formContainer.style.transform = 'translateY(-30px)';
-                            formContainer.style.opacity = '0';
-                            formContainer.style.filter = 'blur(10px)';
-                            
-                            setTimeout(() => {
-                                replaceFormWithSuccessExperience(formContainer);
-                            }, 600);
-                        }, 2000);
+                            replaceFormWithSuccessExperience();
+                        }, 3000);
                         
                     } else if (response.status === 400) {
                         // DUPLICATE DETECTED

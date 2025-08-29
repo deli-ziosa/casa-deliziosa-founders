@@ -1253,33 +1253,43 @@
         
         // Success message display
         function showSuccessMessage() {
-            const successDiv = document.createElement('div');
-            successDiv.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-                    color: white;
-                    padding: 2rem;
-                    border-radius: 20px;
-                    text-align: center;
-                    box-shadow: 0 20px 40px rgba(76, 175, 80, 0.3);
-                    z-index: 10000;
-                    animation: slideIn 0.5s ease-out;
-                ">
-                    <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">🎉 Bienvenue dans le cercle fondateur !</h3>
-                    <p style="margin: 0; font-size: 1.1rem;">Vous recevrez nos informations exclusives très bientôt.</p>
-                </div>
-            `;
-            
-            document.body.appendChild(successDiv);
-            
-            setTimeout(() => {
-                successDiv.remove();
-            }, 4000);
+    const successDiv = document.createElement('div');
+    successDiv.innerHTML = `
+        <div style="
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.4);
+            z-index: 10000;
+            animation: slideIn 0.5s ease-out;
+            cursor: pointer;
+        ">
+            <h3 style="margin: 0 0 1rem 0; font-size: 1.6rem;">🎉 Welcome to the Founding Circle!</h3>
+            <p style="margin: 0; font-size: 1.1rem; line-height: 1.5;">Thank you for your interest. We'll be in touch with exclusive details very soon.</p>
+            <p style="margin: 1rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">Click anywhere to close</p>
+        </div>
+    `;
+    
+    document.body.appendChild(successDiv);
+    
+    // Close on click
+    successDiv.addEventListener('click', () => {
+        successDiv.remove();
+    });
+    
+    // Auto-close after 8 seconds
+    setTimeout(() => {
+        if (document.body.contains(successDiv)) {
+            successDiv.remove();
         }
+    }, 8000);
+}
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {

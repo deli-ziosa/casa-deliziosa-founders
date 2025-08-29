@@ -13,13 +13,7 @@
 
         // PREMIUM SUCCESS EXPERIENCE - AVANT-GARDE VISUAL
         function replaceFormWithSuccessExperience(formContainer) {
-            
-            // Smooth transition out
-            formContainer.style.transition = 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
-            formContainer.style.transform = 'translateY(-30px)';
-            formContainer.style.opacity = '0';
-            formContainer.style.filter = 'blur(10px)';
-            
+            // Form is already hidden, now replace content
             setTimeout(() => {
                 formContainer.innerHTML = `
                     <div class="success-experience" style="

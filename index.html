@@ -1295,6 +1295,7 @@
                 
                 try {
                     // Send to N8N webhook
+                    console.log('Envoi des données:', data);
                     const response = await fetch('https://n8n.srv818666.hstgr.cloud/webhook/5a30cf34-51c6-45db-888c-77128f8eeeb9', {
                         method: 'POST',
                         headers: {
@@ -1302,6 +1303,22 @@
                         },
                         body: JSON.stringify(data)
                     });
+                    
+                    console.log('Status:', response.status);
+                    console.log('Response headers:', response.headers);
+                    
+                    // Vérifier d'abord le contenu de la réponse
+                    const responseText = await response.text();
+                    console.log('Response text:', responseText);
+                    
+                    let responseData = null;
+                    if (responseText) {
+                        try {
+                            responseData = JSON.parse(responseText);
+                        } catch (e) {
+                            console.log('Réponse non-JSON:', responseText);
+                        }
+                    }
                     
                     // Gestion des réponses selon le status code
                     if (response.ok) {

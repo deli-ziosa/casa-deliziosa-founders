@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CASA DELIZIOSA - Exclusive Founding Members</title>
+    <title>CASA DELIZIOSA - Where Every Dish Tells a Story</title>
     <style>
         * {
             margin: 0;
@@ -18,35 +18,57 @@
             overflow-x: hidden;
         }
 
-        /* Hero Section with Animation */
+        /* Particle Background Animation */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(139, 0, 0, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 0.5s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 1s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1.5s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 2s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 2.5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 3s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 3.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { transform: translateY(90vh) scale(1); opacity: 1; }
+            90% { transform: translateY(10vh) scale(1); opacity: 1; }
+            100% { transform: translateY(0vh) scale(0); opacity: 0; }
+        }
+
+        /* Hero Section */
         .hero {
-            height: 85vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             background: radial-gradient(circle at center, rgba(139, 0, 0, 0.08) 0%, transparent 70%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%238B0000" opacity="0.1"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+            z-index: 10;
         }
 
         .hero-content {
-            z-index: 10;
+            z-index: 20;
             position: relative;
         }
 
@@ -135,29 +157,56 @@
             left: 100%;
         }
 
-        .launch-countdown {
-            margin-top: 1.5rem;
-            padding: 1rem 2rem;
-            background: rgba(139, 0, 0, 0.08);
-            border-radius: 25px;
-            border: 2px solid rgba(139, 0, 0, 0.15);
-            display: inline-block;
+        /* Advanced Countdown Timer */
+        .countdown-container {
+            margin-top: 2rem;
             opacity: 0;
             animation: fadeInUp 2s ease-out 2.3s forwards;
         }
 
-        .launch-text {
+        .countdown-title {
             color: #8B0000;
             font-weight: bold;
-            font-size: 1.1rem;
-            margin: 0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
         }
 
-        .countdown-timer {
-            color: #A52A2A;
-            font-size: 1.3rem;
+        .countdown-display {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .countdown-unit {
+            background: rgba(139, 0, 0, 0.1);
+            border: 2px solid rgba(139, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 1rem;
+            min-width: 80px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .countdown-unit:hover {
+            background: rgba(139, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .countdown-number {
+            font-size: 2rem;
             font-weight: bold;
-            margin: 0.5rem 0 0 0;
+            color: #8B0000;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #4A332A;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
         }
 
         .invitation-badge {
@@ -171,140 +220,150 @@
             font-size: 0.9rem;
             font-weight: bold;
             box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
-            z-index: 20;
+            z-index: 30;
             animation: pulse 2s infinite;
         }
 
-        /* Casa Deliziosa Vision */
-        .portfolio-section {
-            padding: 4rem 2rem;
+        /* Heritage Story with Background Image */
+        .heritage-section {
+            padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 10;
         }
 
-        .portfolio-content {
-            text-align: center;
+        .heritage-background {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            opacity: 0.1;
+            background: url('./images/burrata.webp') no-repeat center center;
+            background-size: cover;
+            border-radius: 20px;
+            z-index: -1;
         }
 
-        .portfolio-title {
+        .heritage-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .heritage-text {
+            z-index: 10;
+        }
+
+        .heritage-title {
             font-size: 3rem;
             color: #8B0000;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             position: relative;
         }
 
-        .portfolio-title::after {
+        .heritage-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             width: 120px;
             height: 3px;
             background: linear-gradient(90deg, #8B0000, #A52A2A);
             border-radius: 2px;
         }
 
-        .portfolio-subtitle {
-            font-size: 1.3rem;
-            color: #4A332A;
+        .heritage-story {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
             margin-bottom: 3rem;
-            font-style: italic;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.1);
+            border-left: 5px solid #8B0000;
+            backdrop-filter: blur(10px);
         }
 
-        .portfolio-hero {
-            position: relative;
-            margin-bottom: 3rem;
-            display: inline-block;
+        .heritage-paragraph {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #2C1810;
         }
 
-        .portfolio-main {
+        .heritage-highlight {
+            color: #8B0000;
+            font-weight: 600;
+        }
+
+        /* Photo Showcase Sidebar */
+        .photo-showcase {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .showcase-image {
             width: 100%;
-            max-width: 600px;
-            height: auto;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(139, 0, 0, 0.2);
+            margin-bottom: 1rem;
             transition: transform 0.4s ease;
+            cursor: pointer;
         }
 
-        .portfolio-main:hover {
-            transform: scale(1.02);
-        }
-
-        .portfolio-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
-            color: #FDF5E6;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.15);
-            transition: all 0.4s ease;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 45px rgba(139, 0, 0, 0.25);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .portfolio-item:hover img {
+        .showcase-image:hover {
             transform: scale(1.05);
         }
 
-        .portfolio-item p {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(139, 0, 0, 0.9), transparent);
-            color: #FDF5E6;
-            padding: 1.5rem 1rem 1rem;
-            font-size: 1.1rem;
-            font-weight: bold;
+        .showcase-caption {
             text-align: center;
+            font-style: italic;
+            color: #4A332A;
+            font-size: 0.9rem;
         }
 
-        /* Interactive Cards Section */
-        .benefits-section {
+        .learn-more-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .learn-more-btn {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            color: #FDF5E6;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
+        }
+
+        /* Enhanced Founding Community Section */
+        .founding-section {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
-        .section-title {
-            text-align: center;
+        .founding-title {
             font-size: 3rem;
             color: #8B0000;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             position: relative;
         }
 
-        .section-title::after {
+        .founding-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -316,62 +375,75 @@
             border-radius: 2px;
         }
 
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .benefit-card {
-            background: rgba(255, 255, 255, 0.92);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.06), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(139, 0, 0, 0.15);
-        }
-
-        .benefit-card:hover::before {
-            left: 100%;
-        }
-
-        .benefit-icon {
-            font-size: 3rem;
-            color: #8B0000;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .benefit-title {
-            font-size: 1.5rem;
-            color: #2C1810;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .benefit-description {
+        .founding-description {
+            font-size: 1.3rem;
             color: #4A332A;
-            line-height: 1.6;
-            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.8;
+        }
+
+        .founding-benefits {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem auto;
+            max-width: 700px;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .founding-benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .founding-benefits li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            color: #2C1810;
+        }
+
+        .founding-benefits li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #8B0000;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Interactive Hover Effects */
+        .interactive-section {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-section:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Micro-interactions */
+        .micro-animation {
+            transition: all 0.2s ease;
+        }
+
+        .micro-animation:hover {
+            color: #8B0000;
+            transform: scale(1.05);
+        }
+
+        /* Progressive Disclosure */
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .expandable-content.expanded {
+            max-height: 500px;
         }
 
         /* Chef's Message Section */
@@ -382,6 +454,7 @@
             margin: 3rem 0;
             position: relative;
             overflow: hidden;
+            z-index: 10;
         }
 
         .chef-message::before {
@@ -420,11 +493,13 @@
             font-weight: bold;
         }
 
-        /* Form Section */
+        /* Enhanced Form Section */
         .form-section {
             padding: 5rem 2rem;
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+            z-index: 10;
         }
 
         .form-container {
@@ -433,17 +508,27 @@
             padding: 3rem;
             box-shadow: 0 15px 35px rgba(139, 0, 0, 0.15);
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .form-title {
             text-align: center;
             font-size: 2.5rem;
             color: #8B0000;
+            margin-bottom: 1rem;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #4A332A;
             margin-bottom: 2rem;
+            font-style: italic;
         }
 
         .form-group {
             margin-bottom: 2rem;
+            position: relative;
         }
 
         .form-group label {
@@ -451,6 +536,7 @@
             color: #4A332A;
             margin-bottom: 0.5rem;
             font-weight: bold;
+            transition: all 0.3s ease;
         }
 
         .form-group input,
@@ -474,19 +560,113 @@
             box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
         }
 
+        .form-group input:focus + label,
+        .form-group textarea:focus + label,
+        .form-group select:focus + label {
+            color: #8B0000;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Options Styling */
+        .notification-preference {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(139, 0, 0, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(139, 0, 0, 0.1);
+        }
+
+        .preference-title {
+            color: #4A332A;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.8rem 1.2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 0.9rem;
+        }
+
+        .contact-option:hover {
+            background: rgba(139, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .contact-option input[type="radio"] {
+            display: none;
+        }
+
+        .contact-option input[type="radio"]:checked + .checkmark::after {
+            display: block;
+        }
+
+        .contact-option input[type="radio"]:checked ~ * {
+            color: #8B0000;
+            font-weight: bold;
+        }
+
+        .checkmark {
+            height: 20px;
+            width: 20px;
+            background-color: transparent;
+            border: 2px solid #8B0000;
+            border-radius: 50%;
+            margin-right: 0.8rem;
+            position: relative;
+        }
+
+        .checkmark::after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 4px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #8B0000;
+        }
+
         .submit-btn {
             width: 100%;
             background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
             color: #FDF5E6;
             padding: 1.2rem;
             border: none;
-            border-radius: 15px;
+            border-radius: 50px;
             font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.4rem;
+        }
+
+        .submit-btn:hover .btn-icon {
+            transform: translateX(5px);
         }
 
         .submit-btn::before {
@@ -502,25 +682,57 @@
 
         .submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(139, 0, 0, 0.4);
+            box-shadow: 0 15px 35px rgba(139, 0, 0, 0.4);
         }
 
         .submit-btn:hover::before {
             left: 100%;
         }
 
+        .form-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8B4513;
+            font-style: italic;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero { height: 90vh; }
+            .hero { height: 100vh; }
             .logo { font-size: 3rem; }
             .tagline { font-size: 1.3rem; }
             .hero-subtitle { font-size: 1.1rem; }
-            .portfolio-title, .section-title { font-size: 2.2rem; }
-            .portfolio-main { max-width: 100%; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .benefit-card { padding: 2rem; }
-            .benefits-grid { grid-template-columns: 1fr; }
+            .heritage-title, .founding-title { font-size: 2.2rem; }
+            
+            .heritage-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .photo-showcase {
+                position: static;
+                order: -1;
+            }
+            
+            .heritage-story { padding: 2rem; }
+            .founding-benefits { padding: 2rem; }
             .form-container { padding: 2rem; }
+            
+            .countdown-display {
+                gap: 0.5rem;
+            }
+            
+            .countdown-unit {
+                min-width: 60px;
+                padding: 0.8rem;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
             .invitation-badge { 
                 top: 1rem; 
                 right: 1rem; 
@@ -540,175 +752,225 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Advanced Hover States */
+        .heritage-story:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 0, 0, 0.15);
+        }
+
+        .founding-benefits:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 0, 0, 0.15);
+        }
+
+        /* Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #8B0000, #A52A2A);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
     </style>
 </head>
 <body>
+    <!-- Particle Background -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="invitation-badge">🎯 INVITATION ONLY</div>
         <div class="hero-content">
             <h1 class="logo">CASA DELIZIOSA</h1>
-            <p class="tagline">"European Culinary Mastery, One Dish at a Time"</p>
-            <p class="hero-subtitle">Join the visionary founders shaping the future of European fusion cuisine in California. Become part of our exclusive founding circle.</p>
+            <p class="tagline">"Where Every Dish Tells a Story"</p>
+            <p class="hero-subtitle">Authentic flavors, global experience, Bakersfield community</p>
             
             <div class="hero-cta">
-                <a href="#founding-form" class="cta-button">Join Our Founding Circle</a>
+                <a href="#founding-form" class="cta-button">Share Your Interest</a>
             </div>
             
-            <div class="launch-countdown">
-                <p class="launch-text">Official Launch In</p>
-                <p class="countdown-timer" id="countdown-display">10 Days</p>
-            </div>
-        </div>
-    </section>
-
-            <!-- Master's Portfolio Section -->
-    <section class="portfolio-section">
-        <div class="portfolio-content">
-            <h2 class="portfolio-title fade-in">Master Craftsman Portfolio</h2>
-            <p class="portfolio-subtitle fade-in">25 Years International Excellence - Europe • Asia • California</p>
-            
-            <div class="portfolio-hero fade-in">
-                <img src="./images/burrata.webp" alt="Master Juliano's Signature Burrata Creation" class="portfolio-main">
-                <div class="portfolio-badge">Signature Artisan</div>
-            </div>
-            
-            <div class="portfolio-grid fade-in">
-                <div class="portfolio-item">
-                    <img src="./images/pommes.jpeg" alt="Innovation Fusion - Grilled Peach Artisan Pizza">
-                    <p>California Innovation</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="./images/tdf2018.jpeg" alt="Tour de France 2018 - International Recognition">
-                    <p>Global Recognition</p>
+            <!-- Advanced Countdown Timer -->
+            <div class="countdown-container">
+                <p class="countdown-title">Official Launch In</p>
+                <div class="countdown-display" id="countdown-display">
+                    <div class="countdown-unit">
+                        <span class="countdown-number" id="days">10</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-unit">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-unit">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-unit">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="benefits-section">
-        <h2 class="section-title fade-in">Founding Member Exclusive Benefits</h2>
+    <!-- Heritage Story Section with Photo Integration -->
+    <section class="heritage-section interactive-section">
+        <div class="heritage-background"></div>
+        <div class="heritage-content">
+            <div class="heritage-text">
+                <h2 class="heritage-title fade-in">The Heritage Behind Casa Deliziosa</h2>
+                
+                <div class="heritage-story fade-in">
+                    <p class="heritage-paragraph">
+                        <span class="heritage-highlight micro-animation">While other kids played weekends, I was learning every aspect of our family's 100-employee food operation.</span>
+                    </p>
+                    
+                    <p class="heritage-paragraph">
+                        Living in France but working in Germany taught me early that excellence has no borders. Our company supplied premium airline meals. <span class="heritage-highlight micro-animation">Michelin chefs sourced from our facility.</span>
+                    </p>
+                    
+                    <p class="heritage-paragraph">
+                        Three cultures shaped my foundation: <span class="heritage-highlight micro-animation">German efficiency, Italian passion from my grandparents, French refinement from home.</span>
+                    </p>
+                    
+                    <p class="heritage-paragraph">
+                        From that industrial kitchen to international projects, every experience taught the same lesson: <span class="heritage-highlight micro-animation">never compromise on quality.</span>
+                    </p>
+                    
+                    <p class="heritage-paragraph">
+                        Casa Deliziosa brings that multi-generational standard to families who deserve authenticity without pretension.
+                    </p>
+                </div>
+                
+                <div class="learn-more-cta fade-in">
+                    <a href="/about-the-chef" class="learn-more-btn">Learn My Complete Story →</a>
+                </div>
+            </div>
+
+            <!-- Photo Showcase Sidebar -->
+            <div class="photo-showcase fade-in">
+                <img src="./images/burrata.webp" alt="Master Juliano's Signature Burrata Creation" class="showcase-image" onclick="expandImage(this)">
+                <p class="showcase-caption">Signature Artisan Burrata</p>
+                
+                <img src="./images/tdf2018.jpeg" alt="Tour de France 2018 - International Recognition" class="showcase-image" onclick="expandImage(this)" style="margin-top: 2rem;">
+                <p class="showcase-caption">Tour de France 2018</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founding Community Section -->
+    <section class="founding-section interactive-section">
+        <h2 class="founding-title fade-in">FOUNDING COMMUNITY OPPORTUNITIES</h2>
         
-        <div class="benefits-grid">
-            <div class="benefit-card fade-in">
-                <div class="benefit-icon">🍳</div>
-                <h3 class="benefit-title">Private Culinary Masterclasses</h3>
-                <p class="benefit-description">Monthly exclusive cooking sessions with Master Juliano. Master advanced European techniques from pasta perfection to sous-vide precision cooking.</p>
-            </div>
-
-            <div class="benefit-card fade-in">
-                <div class="benefit-icon">🏢</div>
-                <h3 class="benefit-title">Restaurant Consulting Partnership</h3>
-                <p class="benefit-description">Direct access to Master Juliano's 25+ years of European fusion expertise. Transform your culinary vision with proven international techniques and business insights.</p>
-            </div>
-
-            <div class="benefit-card fade-in">
-                <div class="benefit-icon">⚡</div>
-                <h3 class="benefit-title">Co-Creation Opportunities</h3>
-                <p class="benefit-description">Collaborate on menu development and help shape CASA DELIZIOSA's expansion. Your input directly influences our culinary journey.</p>
-            </div>
-
-            <div class="benefit-card fade-in">
-                <div class="benefit-icon">💎</div>
-                <h3 class="benefit-title">Priority Investment Access</h3>
-                <p class="benefit-description">First access to expansion opportunities and franchise development. Join our journey from artisan kitchen to European culinary empire.</p>
-            </div>
-
-            <div class="benefit-card fade-in">
-                <div class="benefit-icon">🌟</div>
-                <h3 class="benefit-title">Lifetime VIP Status</h3>
-                <p class="benefit-description">Permanent priority reservations, exclusive menu tastings, and special events. Your founding member status opens doors forever.</p>
-            </div>
-
-            <div class="benefit-card fade-in">
-                <div class="benefit-icon">📈</div>
-                <h3 class="benefit-title">Business Growth Network</h3>
-                <p class="benefit-description">Connect with fellow food entrepreneurs and industry leaders. Build valuable relationships within our founding community.</p>
-            </div>
+        <div class="founding-description fade-in">
+            Join our exclusive founding circle and help shape the future of Casa Deliziosa in Bakersfield.
+        </div>
+        
+        <div class="founding-benefits fade-in">
+            <ul>
+                <li class="micro-animation">Experience authentic international fusion cuisine</li>
+                <li class="micro-animation">Be part of something bigger than just dining</li>
+                <li class="micro-animation">Multiple engagement levels available based on your interest</li>
+            </ul>
+        </div>
+        
+        <div class="hero-cta fade-in">
+            <a href="#founding-form" class="cta-button">Complete Survey</a>
         </div>
     </section>
 
     <!-- Chef's Message Section -->
     <section class="chef-message">
         <div class="chef-content">
-            <p class="chef-quote">"Twenty-five years across Europe and Asia taught me that exceptional cuisine transcends borders. Now in California, I'm not just building a restaurant – I'm creating a legacy system that founding partners can scale globally. Your investment joins a proven international track record with American innovation potential."</p>
-            <p class="chef-signature">— Master Juliano & CASA DELIZIOSA International Team</p>
+            <p class="chef-quote">"Twenty-five years across Europe and Asia taught me that exceptional cuisine transcends borders. Now in California, I'm not just building a restaurant – I'm creating a legacy system that founding partners can scale globally."</p>
+            <p class="chef-signature">— Chef Juliano & CASA DELIZIOSA Team</p>
         </div>
     </section>
 
-    <!-- Application Form -->
+    <!-- Simplified Contact Form -->
     <section class="form-section" id="founding-form">
         <div class="form-container fade-in">
-            <h2 class="form-title">Join Our Founding Circle</h2>
+            <h2 class="form-title">Reserve Your Spot</h2>
+            <p class="form-subtitle">One simple step to join our founding circle</p>
+            
             <form id="foundingForm" name="founding-members" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-<input type="hidden" name="form-name" value="founding-members" />
-<div style="display: none;">
-  <input name="bot-field" />
-</div>
+                <input type="hidden" name="form-name" value="founding-members" />
+                <div style="display: none;">
+                    <input name="bot-field" />
+                </div>
+                
                 <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" required placeholder=" ">
+                    <label for="name">Your Name</label>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required placeholder=" ">
+                    <label for="email">Email Address</label>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone">
+                    <input type="tel" id="phone" name="phone" placeholder=" ">
+                    <label for="phone">Phone (Optional)</label>
                 </div>
 
-                <div class="form-group">
-                    <label for="business">Current Business/Background</label>
-                    <input type="text" id="business" name="business" placeholder="Restaurant owner, food enthusiast, entrepreneur...">
-                </div>
-
-                <div class="form-group">
-                    <label for="interest">Your Interest Level *</label>
-                    <select id="interest" name="interest" required>
-                        <option value="">Select your primary interest...</option>
-                        <option value="culinary-learning">Culinary Learning & Masterclasses</option>
-                        <option value="restaurant-consulting">Restaurant Consulting Partnership</option>
-                        <option value="investment-opportunity">Investment & Expansion Opportunities</option>
-                        <option value="menu-collaboration">Menu Co-Creation & Development</option>
-                        <option value="franchise-development">Franchise Development</option>
-                        <option value="all-benefits">All Founding Member Benefits</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="vision">Your Vision for CASA DELIZIOSA</label>
-                    <textarea id="vision" name="vision" rows="4" placeholder="Share your thoughts on European fusion cuisine and how you'd like to contribute to our journey..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="investment-level">Preferred Involvement Level *</label>
-                    <select id="investment-level" name="investment-level" required>
-                        <option value="">Choose your commitment level...</option>
-                        <option value="advisor">Advisor - Strategic guidance and networking</option>
-                        <option value="active-partner">Active Partner - Regular collaboration and consulting</option>
-                        <option value="investor-partner">Investor Partner - Financial investment + advisory role</option>
-                        <option value="franchise-partner">Franchise Partner - Multi-location development</option>
-                    </select>
+                <div class="notification-preference">
+                    <p class="preference-title">How would you prefer to be contacted?</p>
+                    <div class="contact-options">
+                        <label class="contact-option">
+                            <input type="radio" name="contact-method" value="email" checked>
+                            <span class="checkmark"></span>
+                            Email Updates
+                        </label>
+                        <label class="contact-option">
+                            <input type="radio" name="contact-method" value="whatsapp">
+                            <span class="checkmark"></span>
+                            WhatsApp Messages
+                        </label>
+                        <label class="contact-option">
+                            <input type="radio" name="contact-method" value="both">
+                            <span class="checkmark"></span>
+                            Both
+                        </label>
+                    </div>
                 </div>
 
                 <button type="submit" class="submit-btn">
-                    Reserve My Founding Position
+                    <span class="btn-text">Reserve My Position</span>
+                    <span class="btn-icon">→</span>
                 </button>
+                
+                <p class="form-note">*Complete details will be shared via your preferred contact method</p>
             </form>
         </div>
     </section>
 
     <script>
-        // Launch countdown functionality
+        // Advanced Real-time Countdown
         function updateCountdown() {
+            // Set launch date to 10 days from now
             const launchDate = new Date();
-            launchDate.setDate(launchDate.getDate() + 10); // Set launch to 10 days from today
+            launchDate.setDate(launchDate.getDate() + 10);
             
-            // Store launch date in localStorage to persist across sessions
+            // Store launch date in localStorage
             if (!localStorage.getItem('casaDelizioso_launchDate')) {
                 localStorage.setItem('casaDelizioso_launchDate', launchDate.toISOString());
             }
@@ -716,24 +978,83 @@
             const storedLaunchDate = new Date(localStorage.getItem('casaDelizioso_launchDate'));
             const now = new Date();
             const timeDifference = storedLaunchDate - now;
-            const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
             
-            const countdownElement = document.getElementById('countdown-display');
-            if (countdownElement) {
-                if (daysRemaining > 0) {
-                    countdownElement.textContent = `${daysRemaining} Days`;
-                } else {
-                    countdownElement.textContent = "LAUNCHED!";
-                    countdownElement.style.color = '#4CAF50';
+            if (timeDifference > 0) {
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                // Add urgency animations when time is running low
+                if (days <= 3) {
+                    document.querySelector('.countdown-container').style.animation = 'pulse 1s infinite';
                 }
+                if (days <= 1) {
+                    document.querySelector('.countdown-container').style.color = '#FF0000';
+                }
+            } else {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                document.querySelector('.countdown-title').textContent = 'LAUNCHED!';
             }
         }
 
-        // Smooth scroll for CTA button
+        // Scroll Progress Indicator
+        function updateScrollProgress() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('scroll-progress').style.width = progress + '%';
+        }
+
+        // Image Expansion
+        function expandImage(img) {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            `;
+            
+            // Create expanded image
+            const expandedImg = img.cloneNode(true);
+            expandedImg.style.cssText = `
+                max-width: 90%;
+                max-height: 90%;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            `;
+            
+            overlay.appendChild(expandedImg);
+            document.body.appendChild(overlay);
+            
+            // Close on click
+            overlay.addEventListener('click', () => {
+                document.body.removeChild(overlay);
+            });
+        }
+
+        // Smooth scroll with easing
         function setupSmoothScroll() {
-            const ctaButton = document.querySelector('.cta-button');
-            if (ctaButton) {
-                ctaButton.addEventListener('click', function(e) {
+            const ctaButtons = document.querySelectorAll('.cta-button');
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetElement = document.querySelector('#founding-form');
                     if (targetElement) {
@@ -743,84 +1064,92 @@
                         });
                     }
                 });
-            }
+            });
         }
 
-        // Scroll animations
-        function isElementInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
-
-        function isElementPartiallyInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
-            return (rect.top <= windowHeight * 0.8 && rect.bottom >= 0);
-        }
-
+        // Enhanced scroll animations
         function handleScrollAnimations() {
             const elements = document.querySelectorAll('.fade-in');
             elements.forEach(el => {
-                if (isElementPartiallyInViewport(el)) {
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                if (rect.top <= windowHeight * 0.8 && rect.bottom >= 0) {
                     el.classList.add('visible');
                 }
             });
         }
 
-        // Form enhancements
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize countdown
-            updateCountdown();
-            
-            // Setup smooth scroll
-            setupSmoothScroll();
-            
+        // Micro-interactions
+        function setupMicroInteractions() {
+            const microElements = document.querySelectorAll('.micro-animation');
+            microElements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.color = '#8B0000';
+                });
+                
+                el.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.color = '';
+                });
+            });
+        }
+
+        // Enhanced form interactions
+        function setupFormEnhancements() {
             const form = document.getElementById('foundingForm');
             const inputs = form.querySelectorAll('input, select, textarea');
             
-            // Add focus animations
             inputs.forEach(input => {
                 input.addEventListener('focus', function() {
-                    this.parentElement.style.transform = 'translateX(5px)';
+                    this.parentElement.style.transform = 'translateY(-5px)';
+                    this.parentElement.style.boxShadow = '0 10px 25px rgba(139, 0, 0, 0.1)';
                 });
                 
                 input.addEventListener('blur', function() {
-                    this.parentElement.style.transform = 'translateX(0)';
+                    this.parentElement.style.transform = 'translateY(0)';
+                    this.parentElement.style.boxShadow = '';
                 });
             });
 
-            // Form submission
             form.addEventListener('submit', function(e) {
-                // Let Netlify handle the actual submission
                 const submitBtn = form.querySelector('.submit-btn');
-                submitBtn.innerHTML = 'Processing Your Application...';
+                submitBtn.innerHTML = 'Processing Your Survey...';
                 submitBtn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
             });
+        }
 
-            // Initial scroll check
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCountdown();
+            setupSmoothScroll();
+            setupMicroInteractions();
+            setupFormEnhancements();
             handleScrollAnimations();
+            
+            // Update countdown every second
+            setInterval(updateCountdown, 1000);
         });
 
-        // Scroll event listener
-        window.addEventListener('scroll', handleScrollAnimations);
+        // Scroll event listeners
+        window.addEventListener('scroll', () => {
+            handleScrollAnimations();
+            updateScrollProgress();
+        });
 
-        // Smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close any expanded images
+                const overlays = document.querySelectorAll('[style*="position: fixed"]');
+                overlays.forEach(overlay => {
+                    if (overlay.style.zIndex === '9999') {
+                        overlay.remove();
+                    }
                 });
-            });
+            }
         });
-
-        // Update countdown daily
-        setInterval(updateCountdown, 24 * 60 * 60 * 1000); // Update once per day
     </script>
 </body>
 </html>

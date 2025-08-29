@@ -567,6 +567,21 @@
             transform: translateY(-2px);
         }
 
+        .form-group input:invalid {
+            border-color: #DC3545;
+        }
+
+        .form-group input:valid {
+            border-color: #28A745;
+        }
+
+        .phone-error {
+            color: #DC3545;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
         /* Contact Options Styling */
         .notification-preference {
             margin-bottom: 2rem;
@@ -935,8 +950,14 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="tel" id="phone" name="phone" placeholder=" ">
-                    <label for="phone">Phone (Optional)</label>
+                    <input type="tel" 
+                           id="phone" 
+                           name="phone" 
+                           placeholder=" "
+                           pattern="^(\+?1[-.\s]?)?(\(?[0-9]{3}\)?[-.\s]?)?[0-9]{3}[-.\s]?[0-9]{4}$"
+                           title="US phone format: (555) 123-4567 or +1-555-123-4567">
+                    <label for="phone">Phone (US Format - Optional)</label>
+                    <div class="phone-error" id="phone-error">Please enter a valid US phone number format: (555) 123-4567</div>
                 </div>
 
                 <div class="notification-preference">
@@ -971,6 +992,30 @@
     </section>
 
     <script>
+        // US Phone validation function
+        function validateUSPhone(phone) {
+            if (!phone || phone.trim() === '') return true; // Optional field
+            const usPhoneRegex = /^(\+?1[-.\s]?)?(\(?[0-9]{3}\)?[-.\s]?)?[0-9]{3}[-.\s]?[0-9]{4}$/;
+            return usPhoneRegex.test(phone.trim());
+        }
+
+        // Real-time phone validation
+        function setupPhoneValidation() {
+            const phoneInput = document.getElementById('phone');
+            const phoneError = document.getElementById('phone-error');
+            
+            phoneInput.addEventListener('input', function() {
+                const phoneValue = this.value;
+                if (phoneValue && !validateUSPhone(phoneValue)) {
+                    phoneError.style.display = 'block';
+                    this.style.borderColor = '#DC3545';
+                } else {
+                    phoneError.style.display = 'none';
+                    this.style.borderColor = phoneValue ? '#28A745' : '#D2B48C';
+                }
+            });
+        }
+
         // Advanced Real-time Countdown
         function updateCountdown() {
             // Set launch date to 10 days from now
@@ -1126,15 +1171,32 @@
                 const submitBtn = form.querySelector('.submit-btn');
                 const originalContent = submitBtn.innerHTML;
                 
+                // Validate phone if provided
+                const phoneValue = document.getElementById('phone').value;
+                if (phoneValue && !validateUSPhone(phoneValue)) {
+                    document.getElementById('phone-error').style.display = 'block';
+                    document.getElementById('phone').style.borderColor = '#DC3545';
+                    return;
+                }
+                
                 // Visual feedback
                 submitBtn.innerHTML = '🚀 Envoi en cours...';
                 submitBtn.style.background = 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)';
                 submitBtn.disabled = true;
                 
-                // Collect form data
+                // Collect form data with corrected timestamp
                 const formData = new FormData(form);
+                const now = new Date();
                 const data = {
-                    timestamp: new Date().toISOString(),
+                    timestamp: now.toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        timeZone: 'America/Los_Angeles'
+                    }),
                     source: 'casa-deliziosa-landing',
                     page_url: window.location.href,
                     user_agent: navigator.userAgent,
@@ -1225,6 +1287,7 @@
             setupSmoothScroll();
             setupMicroInteractions();
             setupFormEnhancements();
+            setupPhoneValidation();
             handleScrollAnimations();
             
             // Update countdown every second

@@ -1693,263 +1693,250 @@
                             setTimeout(() => {
                                 // Replace with premium success experience
                                 formContainer.innerHTML = `
-                                    <div class="success-experience-premium" style="
+                                    <div class="exclusive-welcome" style="
                                         opacity: 0;
-                                        transform: translateY(20px);
-                                        animation: successFadeIn 1.5s ease-out forwards;
+                                        transform: translateY(30px);
+                                        animation: luxuryReveal 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                                        text-align: center;
+                                        position: relative;
+                                        overflow: hidden;
                                     ">
-                                        <!-- Premium Crown Icon -->
-                                        <div style="text-align: center; margin-bottom: 2rem;">
-                                            <div style="
-                                                font-size: 4rem;
-                                                background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #FFD700 100%);
-                                                -webkit-background-clip: text;
-                                                background-clip: text;
-                                                -webkit-text-fill-color: transparent;
-                                                margin-bottom: 1rem;
-                                                animation: crownFloat 3s ease-in-out infinite;
-                                            ">👑</div>
+                                        <!-- Ambient Background Effect -->
+                                        <div style="
+                                            position: absolute;
+                                            top: -50%;
+                                            left: -50%;
+                                            width: 200%;
+                                            height: 200%;
+                                            background: radial-gradient(circle, rgba(139, 0, 0, 0.08) 0%, transparent 70%);
+                                            animation: ambientPulse 6s ease-in-out infinite;
+                                            z-index: 1;
+                                        "></div>
+                                        
+                                        <!-- Exclusive Badge -->
+                                        <div style="
+                                            display: inline-block;
+                                            background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+                                            color: #FDF5E6;
+                                            padding: 0.8rem 2rem;
+                                            border-radius: 50px;
+                                            font-size: 0.9rem;
+                                            font-weight: bold;
+                                            letter-spacing: 1px;
+                                            text-transform: uppercase;
+                                            margin-bottom: 2rem;
+                                            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+                                            position: relative;
+                                            z-index: 10;
+                                            animation: badgeGlow 3s ease-in-out infinite alternate;
+                                        ">Founding Circle Member</div>
+
+                                        <!-- Personal Welcome Message -->
+                                        <div style="position: relative; z-index: 10; margin-bottom: 3rem;">
                                             <h2 style="
-                                                font-size: 2.5rem;
+                                                font-size: 2.8rem;
                                                 color: #8B0000;
-                                                margin-bottom: 0.5rem;
+                                                margin-bottom: 1rem;
                                                 font-weight: bold;
                                                 text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.1);
-                                            ">Founding Circle Confirmed</h2>
+                                                line-height: 1.2;
+                                            ">Welcome to Something<br>Extraordinary</h2>
+                                            
                                             <p style="
-                                                font-size: 1.2rem;
-                                                color: #8B4513;
+                                                font-size: 1.4rem;
+                                                color: #4A332A;
+                                                line-height: 1.6;
+                                                max-width: 500px;
+                                                margin: 0 auto 2rem auto;
                                                 font-style: italic;
-                                                margin-bottom: 2rem;
-                                            ">Your culinary journey with Casa Deliziosa begins now</p>
+                                            ">You're now part of an exclusive circle that will shape the future of authentic cuisine in Bakersfield.</p>
                                         </div>
 
-                                        <!-- Chef's Personal Message -->
+                                        <!-- Chef's Intimate Message -->
                                         <div style="
-                                            background: linear-gradient(135deg, rgba(139, 0, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
-                                            padding: 2.5rem;
-                                            border-radius: 20px;
-                                            border: 2px solid rgba(139, 0, 0, 0.2);
-                                            margin-bottom: 2.5rem;
-                                            backdrop-filter: blur(10px);
+                                            background: rgba(255, 255, 255, 0.9);
+                                            border: 1px solid rgba(139, 0, 0, 0.1);
+                                            border-radius: 25px;
+                                            padding: 3rem 2.5rem;
+                                            margin-bottom: 3rem;
+                                            backdrop-filter: blur(15px);
                                             position: relative;
-                                            overflow: hidden;
+                                            z-index: 10;
+                                            cursor: pointer;
+                                            transition: all 0.4s ease;
+                                        " onmouseover="
+                                            this.style.transform='translateY(-5px)';
+                                            this.style.boxShadow='0 25px 50px rgba(139, 0, 0, 0.15)';
+                                        " onmouseout="
+                                            this.style.transform='translateY(0)';
+                                            this.style.boxShadow='0 15px 35px rgba(139, 0, 0, 0.1)';
                                         ">
                                             <div style="
+                                                width: 4px;
+                                                height: 60px;
+                                                background: linear-gradient(to bottom, #8B0000, #A52A2A);
                                                 position: absolute;
-                                                top: 0;
-                                                left: -100%;
-                                                width: 100%;
-                                                height: 100%;
-                                                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-                                                animation: shimmerEffect 3s infinite;
+                                                left: 2rem;
+                                                top: 50%;
+                                                transform: translateY(-50%);
+                                                border-radius: 2px;
                                             "></div>
+                                            
                                             <blockquote style="
                                                 font-size: 1.3rem;
-                                                font-style: italic;
                                                 color: #2C1810;
                                                 line-height: 1.8;
-                                                margin: 0 0 1rem 0;
+                                                margin: 0 0 1.5rem 2rem;
+                                                font-style: italic;
                                                 position: relative;
-                                                z-index: 2;
-                                            ">"Expect exclusive communications within 48 hours. Your founding member benefits await."</blockquote>
-                                            <cite style="
-                                                font-size: 1.1rem;
-                                                color: #8B0000;
-                                                font-weight: bold;
-                                                position: relative;
-                                                z-index: 2;
-                                            ">— Chef Juliano</cite>
-                                        </div>
-
-                                        <!-- Timeline Steps -->
-                                        <div style="
-                                            background: rgba(255, 255, 255, 0.95);
-                                            padding: 2rem;
-                                            border-radius: 20px;
-                                            border-left: 5px solid #8B0000;
-                                            box-shadow: 0 15px 35px rgba(139, 0, 0, 0.1);
-                                            margin-bottom: 2.5rem;
-                                        ">
-                                            <h3 style="
-                                                color: #8B0000;
-                                                text-align: center;
-                                                margin-bottom: 1.5rem;
-                                                font-size: 1.4rem;
-                                            ">FOUNDING MEMBER TIMELINE</h3>
+                                            ">"Every founding member receives my personal attention. Within 48 hours, you'll discover why this isn't just another restaurant—it's a culinary legacy."</blockquote>
                                             
-                                            <div style="margin-bottom: 1rem;">
+                                            <div style="
+                                                margin-left: 2rem;
+                                                display: flex;
+                                                align-items: center;
+                                                gap: 1rem;
+                                            ">
                                                 <div style="
+                                                    width: 50px;
+                                                    height: 50px;
+                                                    background: linear-gradient(135deg, #8B0000, #A52A2A);
+                                                    border-radius: 50%;
                                                     display: flex;
                                                     align-items: center;
-                                                    padding: 1rem;
-                                                    background: rgba(139, 0, 0, 0.05);
-                                                    border-radius: 12px;
-                                                    margin-bottom: 0.8rem;
-                                                    transition: all 0.3s ease;
-                                                ">
+                                                    justify-content: center;
+                                                    color: #FDF5E6;
+                                                    font-weight: bold;
+                                                    font-size: 1.2rem;
+                                                ">J</div>
+                                                <div>
                                                     <div style="
-                                                        width: 30px;
-                                                        height: 30px;
-                                                        background: linear-gradient(135deg, #8B0000, #A52A2A);
-                                                        border-radius: 50%;
-                                                        display: flex;
-                                                        align-items: center;
-                                                        justify-content: center;
-                                                        color: white;
                                                         font-weight: bold;
-                                                        margin-right: 1rem;
-                                                        font-size: 0.9rem;
-                                                    ">1</div>
-                                                    <div>
-                                                        <strong style="color: #8B0000;">Exclusive menu preview</strong>
-                                                        <span style="color: #8B4513; margin-left: 8px; font-size: 0.9rem;">(within 72h)</span>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div style="
-                                                    display: flex;
-                                                    align-items: center;
-                                                    padding: 1rem;
-                                                    background: rgba(139, 0, 0, 0.05);
-                                                    border-radius: 12px;
-                                                    margin-bottom: 0.8rem;
-                                                ">
+                                                        color: #8B0000;
+                                                        margin-bottom: 0.2rem;
+                                                    ">Chef Juliano</div>
                                                     <div style="
-                                                        width: 30px;
-                                                        height: 30px;
-                                                        background: linear-gradient(135deg, #8B0000, #A52A2A);
-                                                        border-radius: 50%;
-                                                        display: flex;
-                                                        align-items: center;
-                                                        justify-content: center;
-                                                        color: white;
-                                                        font-weight: bold;
-                                                        margin-right: 1rem;
                                                         font-size: 0.9rem;
-                                                    ">2</div>
-                                                    <div>
-                                                        <strong style="color: #8B0000;">Priority event access</strong>
-                                                        <span style="color: #8B4513; margin-left: 8px; font-size: 0.9rem;">(first invitations)</span>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div style="
-                                                    display: flex;
-                                                    align-items: center;
-                                                    padding: 1rem;
-                                                    background: rgba(139, 0, 0, 0.05);
-                                                    border-radius: 12px;
-                                                ">
-                                                    <div style="
-                                                        width: 30px;
-                                                        height: 30px;
-                                                        background: linear-gradient(135deg, #8B0000, #A52A2A);
-                                                        border-radius: 50%;
-                                                        display: flex;
-                                                        align-items: center;
-                                                        justify-content: center;
-                                                        color: white;
-                                                        font-weight: bold;
-                                                        margin-right: 1rem;
-                                                        font-size: 0.9rem;
-                                                    ">3</div>
-                                                    <div>
-                                                        <strong style="color: #8B0000;">Direct chef communication</strong>
-                                                        <span style="color: #8B4513; margin-left: 8px; font-size: 0.9rem;">(exclusive channel)</span>
-                                                    </div>
+                                                        color: #8B4513;
+                                                        font-style: italic;
+                                                    ">Founder & Head Chef</div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- Premium Action Buttons -->
+                                        <!-- Interactive Next Step -->
                                         <div style="
-                                            display: flex;
-                                            gap: 1rem;
-                                            justify-content: center;
-                                            flex-wrap: wrap;
+                                            position: relative;
+                                            z-index: 10;
                                         ">
-                                            <a href="#heritage-section" onclick="document.querySelector('.heritage-section').scrollIntoView({behavior: 'smooth'}); return false;" style="
-                                                background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-                                                color: #FDF5E6;
-                                                padding: 1rem 1.8rem;
-                                                border-radius: 25px;
-                                                text-decoration: none;
-                                                font-weight: bold;
-                                                transition: all 0.3s ease;
-                                                box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
-                                                font-size: 0.95rem;
-                                            ">Discover Our Heritage</a>
-                                            
-                                            <a href="https://instagram.com/casadeliziosa" target="_blank" style="
+                                            <div style="
                                                 background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
-                                                color: #FDF5E6;
-                                                padding: 1rem 1.8rem;
-                                                border-radius: 25px;
-                                                text-decoration: none;
-                                                font-weight: bold;
-                                                transition: all 0.3s ease;
-                                                box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
-                                                font-size: 0.95rem;
-                                            ">Follow Journey</a>
+                                                border-radius: 50px;
+                                                padding: 2px;
+                                                display: inline-block;
+                                                margin-bottom: 1.5rem;
+                                                animation: buttonPulse 4s ease-in-out infinite;
+                                            ">
+                                                <button onclick="
+                                                    this.innerHTML = '✓ Journey Started';
+                                                    this.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                                                    setTimeout(() => {
+                                                        document.querySelector('.heritage-section').scrollIntoView({behavior: 'smooth'});
+                                                    }, 800);
+                                                " style="
+                                                    background: rgba(253, 245, 230, 0.95);
+                                                    color: #8B0000;
+                                                    border: none;
+                                                    padding: 1.2rem 3rem;
+                                                    border-radius: 48px;
+                                                    font-size: 1.2rem;
+                                                    font-weight: bold;
+                                                    cursor: pointer;
+                                                    transition: all 0.3s ease;
+                                                    width: 100%;
+                                                    max-width: 300px;
+                                                " onmouseover="
+                                                    this.style.background='#8B0000';
+                                                    this.style.color='#FDF5E6';
+                                                    this.style.transform='scale(1.05)';
+                                                " onmouseout="
+                                                    this.style.background='rgba(253, 245, 230, 0.95)';
+                                                    this.style.color='#8B0000';
+                                                    this.style.transform='scale(1)';
+                                                ">Begin Your Journey</button>
+                                            </div>
                                             
-                                            <a href="#" onclick="
-                                                if (navigator.share) {
-                                                    navigator.share({
-                                                        title: 'Casa Deliziosa - Founding Circle',
-                                                        text: 'I joined the Casa Deliziosa founding circle! Authentic cuisine, global experience.',
-                                                        url: window.location.href
-                                                    });
-                                                } else {
-                                                    const url = encodeURIComponent(window.location.href);
-                                                    const text = encodeURIComponent('I joined Casa Deliziosa founding circle!');
-                                                    window.open('https://twitter.com/intent/tweet?text=' + text + '&url=' + url, '_blank');
-                                                }
-                                                return false;
-                                            " style="
-                                                background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-                                                color: #2C1810;
-                                                padding: 1rem 1.8rem;
-                                                border-radius: 25px;
-                                                text-decoration: none;
-                                                font-weight: bold;
-                                                transition: all 0.3s ease;
-                                                box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
-                                                font-size: 0.95rem;
-                                            ">Share Experience</a>
+                                            <p style="
+                                                font-size: 0.9rem;
+                                                color: #8B4513;
+                                                font-style: italic;
+                                                margin-top: 1rem;
+                                            ">Click above to discover our heritage and vision</p>
                                         </div>
+
+                                        <!-- Subtle Social Proof -->
+                                        <div style="
+                                            position: absolute;
+                                            bottom: -1rem;
+                                            left: 50%;
+                                            transform: translateX(-50%);
+                                            font-size: 0.8rem;
+                                            color: #8B4513;
+                                            opacity: 0.7;
+                                            z-index: 10;
+                                        ">Join 127 other founding members</div>
                                     </div>
                                 `;
                                 
-                                // Add CSS animations
-                                if (!document.querySelector('#success-animations')) {
+                                // Add CSS animations for immersive experience
+                                if (!document.querySelector('#immersive-animations')) {
                                     const style = document.createElement('style');
-                                    style.id = 'success-animations';
+                                    style.id = 'immersive-animations';
                                     style.textContent = `
-                                        @keyframes successFadeIn {
+                                        @keyframes luxuryReveal {
                                             0% {
                                                 opacity: 0;
-                                                transform: translateY(20px);
+                                                transform: translateY(30px);
+                                                filter: blur(10px);
                                             }
                                             100% {
                                                 opacity: 1;
                                                 transform: translateY(0);
+                                                filter: blur(0);
                                             }
                                         }
                                         
-                                        @keyframes crownFloat {
-                                            0%, 100% { transform: translateY(0) rotate(-1deg); }
-                                            50% { transform: translateY(-10px) rotate(1deg); }
+                                        @keyframes ambientPulse {
+                                            0%, 100% { 
+                                                opacity: 0.6; 
+                                                transform: scale(1) rotate(0deg); 
+                                            }
+                                            50% { 
+                                                opacity: 0.8; 
+                                                transform: scale(1.1) rotate(0.5deg); 
+                                            }
                                         }
                                         
-                                        @keyframes shimmerEffect {
-                                            0% { left: -100%; }
-                                            100% { left: 100%; }
+                                        @keyframes badgeGlow {
+                                            0% { 
+                                                box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+                                                transform: scale(1);
+                                            }
+                                            100% { 
+                                                box-shadow: 0 15px 40px rgba(139, 0, 0, 0.5);
+                                                transform: scale(1.02);
+                                            }
                                         }
                                         
-                                        .success-experience-premium a:hover {
-                                            transform: translateY(-3px) !important;
-                                            box-shadow: 0 12px 30px rgba(139, 0, 0, 0.4) !important;
+                                        @keyframes buttonPulse {
+                                            0%, 100% { 
+                                                box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.7);
+                                                transform: scale(1);
+                                            }
+                                            50% { 
+                                                box-shadow: 0 0 0 15px rgba(139, 0, 0, 0);
+                                                transform: scale(1.02);
+                                            }
                                         }
                                     `;
                                     document.head.appendChild(style);

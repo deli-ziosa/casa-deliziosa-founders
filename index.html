@@ -1303,10 +1303,9 @@
                         body: JSON.stringify(data)
                     });
                     
-                    const result = await response.json();
-                    
+                    // Gestion des réponses selon le status code
                     if (response.ok) {
-                        // SUCCESS - Nouveau membre
+                        // SUCCESS - Status 200 - Nouveau membre
                         submitBtn.innerHTML = '✅ Inscription confirmée !';
                         submitBtn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
                         showSuccessMessage();
@@ -1327,11 +1326,23 @@
                             submitBtn.disabled = false;
                         }, 3000);
                         
-                    } else if (response.status === 400 && result.error) {
-                        // DOUBLON DÉTECTÉ - NOUVELLE GESTION
+                    } else if (response.status === 400) {
+                        // DOUBLON DÉTECTÉ - Status 400
+                        let errorMessage = 'Cet email est déjà enregistré. Impossible de soumettre à nouveau.';
+                        
+                        // Essayer de récupérer le message d'erreur du webhook
+                        try {
+                            const errorResult = await response.json();
+                            if (errorResult.message) {
+                                errorMessage = errorResult.message;
+                            }
+                        } catch (e) {
+                            console.log('Impossible de parser le message d\'erreur JSON');
+                        }
+                        
                         submitBtn.innerHTML = '🚫 Email déjà enregistré';
                         submitBtn.style.background = 'linear-gradient(135deg, #DC3545 0%, #C82333 100%)';
-                        showErrorMessage(result.message || 'Cet email est déjà enregistré. Impossible de soumettre à nouveau.');
+                        showErrorMessage(errorMessage);
                         
                         // Reset button after 5 seconds
                         setTimeout(() => {
@@ -1341,8 +1352,8 @@
                         }, 5000);
                         
                     } else {
-                        // AUTRE ERREUR
-                        throw new Error('Erreur serveur');
+                        // AUTRE ERREUR SERVER (500, 404, etc.)
+                        throw new Error(`Erreur serveur: ${response.status}`);
                     }
                     
                 } catch (error) {

@@ -1624,6 +1624,10 @@
                 // Collect form data
                 const formData = new FormData(form);
                 const now = new Date();
+                
+                // Generate member number first (will be used in popup)
+                const memberNumber = Math.floor(Math.random() * (189 - 125 + 1)) + 125;
+                
                 const data = {
                     timestamp: now.toLocaleString('en-US', {
                         year: 'numeric',
@@ -1641,7 +1645,8 @@
                     email: formData.get('email'),
                     phone: formData.get('phone') || 'Not provided',
                     contact_method: formData.get('contact-method'),
-                    submission_type: 'founding_member_interest'
+                    submission_type: 'founding_member_interest',
+                    member_number: memberNumber
                 };
                 
                 try {
@@ -1674,7 +1679,7 @@
                     
                     // Handle responses based on webhook data
                     if (response.ok) {
-                        // SUCCESS - New registration
+                        // Use the member number generated earlier
                         const successMessage = webhookResponse?.message || 'Welcome to Casa Deliziosa founding circle!';
                         
                         submitBtn.innerHTML = '✅ Registration Confirmed!';
@@ -1729,7 +1734,7 @@
                                             position: relative;
                                             z-index: 10;
                                             animation: badgeGlow 3s ease-in-out infinite alternate;
-                                        ">Founding Member #137</div>
+                                        ">Founding Member #${memberNumber}</div>
 
                                         <!-- Personal Welcome Message -->
                                         <div style="position: relative; z-index: 10; margin-bottom: 3rem;">
@@ -1884,7 +1889,7 @@
                                             color: #8B4513;
                                             opacity: 0.7;
                                             z-index: 10;
-                                        ">You are member #137 of 200 founding positions</div>
+                                        ">You are member #${memberNumber} of 200 founding positions</div>
                                     </div>
                                 `;
                                 

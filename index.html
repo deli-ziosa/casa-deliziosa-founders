@@ -1148,93 +1148,72 @@
             });
         }
 
-        // SUCCESS MESSAGE FUNCTION
-        function showSuccessMessage() {
-            const successDiv = document.createElement('div');
-            successDiv.innerHTML = `
+        // WEBHOOK-DRIVEN MESSAGE FUNCTION - UNIFIED
+        function showWebhookMessage(message, type = 'success') {
+            // Remove existing messages
+            const existingMessages = document.querySelectorAll('.webhook-message');
+            existingMessages.forEach(msg => msg.remove());
+            
+            const isSuccess = type === 'success';
+            const colors = {
+                success: {
+                    bg: 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)',
+                    shadow: 'rgba(76, 175, 80, 0.4)',
+                    icon: '🎉',
+                    title: 'Registration Successful!'
+                },
+                error: {
+                    bg: 'linear-gradient(135deg, #DC3545 0%, #C82333 100%)',
+                    shadow: 'rgba(220, 53, 69, 0.4)',
+                    icon: '🚫',
+                    title: 'Registration Issue'
+                }
+            };
+            
+            const config = colors[type];
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'webhook-message';
+            messageDiv.innerHTML = `
                 <div style="
                     position: fixed;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
-                    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+                    background: ${config.bg};
                     color: white;
                     padding: 2.5rem;
                     border-radius: 20px;
                     text-align: center;
-                    box-shadow: 0 20px 40px rgba(76, 175, 80, 0.4);
+                    box-shadow: 0 20px 40px ${config.shadow};
                     z-index: 10000;
                     animation: slideIn 0.5s ease-out;
                     cursor: pointer;
+                    max-width: 500px;
+                    min-width: 300px;
                 ">
-                    <h3 style="margin: 0 0 1rem 0; font-size: 1.6rem;">🎉 Welcome to the Founding Circle!</h3>
-                    <p style="margin: 0; font-size: 1.1rem; line-height: 1.5;">Thank you for your interest. We'll be in touch with exclusive details very soon.</p>
+                    <h3 style="margin: 0 0 1rem 0; font-size: 1.6rem;">${config.icon} ${config.title}</h3>
+                    <p style="margin: 0; font-size: 1.1rem; line-height: 1.5;">${message}</p>
                     <p style="margin: 1rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">Click anywhere to close</p>
                 </div>
             `;
             
-            document.body.appendChild(successDiv);
+            document.body.appendChild(messageDiv);
             
             // Close on click
-            successDiv.addEventListener('click', () => {
-                successDiv.remove();
+            messageDiv.addEventListener('click', () => {
+                messageDiv.remove();
             });
             
             // Auto-close after 8 seconds
             setTimeout(() => {
-                if (document.body.contains(successDiv)) {
-                    successDiv.remove();
+                if (document.body.contains(messageDiv)) {
+                    messageDiv.remove();
                 }
             }, 8000);
         }
 
-        // ERROR MESSAGE FUNCTION - NOUVELLE FONCTION
-        function showErrorMessage(message) {
-            // Remove existing error messages
-            const existingMessages = document.querySelectorAll('.error-message');
-            existingMessages.forEach(msg => msg.remove());
-            
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
-            errorDiv.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background: linear-gradient(135deg, #DC3545 0%, #C82333 100%);
-                    color: white;
-                    padding: 2.5rem;
-                    border-radius: 20px;
-                    text-align: center;
-                    box-shadow: 0 20px 40px rgba(220, 53, 69, 0.4);
-                    z-index: 10000;
-                    animation: slideIn 0.5s ease-out;
-                    cursor: pointer;
-                    max-width: 400px;
-                ">
-                    <h3 style="margin: 0 0 1rem 0; font-size: 1.6rem;">🚫 Email déjà enregistré</h3>
-                    <p style="margin: 0; font-size: 1.1rem; line-height: 1.5;">${message}</p>
-                    <p style="margin: 1rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">Cliquez pour fermer</p>
-                </div>
-            `;
-            
-            document.body.appendChild(errorDiv);
-            
-            // Close on click
-            errorDiv.addEventListener('click', () => {
-                errorDiv.remove();
-            });
-            
-            // Auto-close after 8 seconds
-            setTimeout(() => {
-                if (document.body.contains(errorDiv)) {
-                    errorDiv.remove();
-                }
-            }, 8000);
-        }
-
-        // Enhanced form interactions with webhook integration - FONCTION MISE À JOUR
+        // WEBHOOK-DRIVEN Form Enhancements - OPTIMIZED
         function setupFormEnhancements() {
             const form = document.getElementById('foundingForm');
             const inputs = form.querySelectorAll('input, select, textarea');
@@ -1266,7 +1245,7 @@
                 }
                 
                 // Visual feedback - Loading state
-                submitBtn.innerHTML = '⏳ Vérification en cours...';
+                submitBtn.innerHTML = '⏳ Processing...';
                 submitBtn.style.background = 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)';
                 submitBtn.disabled = true;
                 
@@ -1288,16 +1267,15 @@
                     user_agent: navigator.userAgent,
                     name: formData.get('name'),
                     email: formData.get('email'),
-                    phone: formData.get('phone') || 'Non fourni',
+                    phone: formData.get('phone') || 'Not provided',
                     contact_method: formData.get('contact-method'),
                     submission_type: 'founding_member_interest'
                 };
                 
                 try {
-                    // Send to N8N webhook TEST
-                    console.log('=== DEBUT TEST WEBHOOK ===');
-                    console.log('Email testé:', data.email);
-                    console.log('Données complètes:', data);
+                    console.log('=== WEBHOOK SUBMISSION ===');
+                    console.log('Email:', data.email);
+                    console.log('Data:', data);
                     
                     const response = await fetch('https://n8n.srv818666.hstgr.cloud/webhook-test/5a30cf34-51c6-45db-888c-77128f8eeeb9', {
                         method: 'POST',
@@ -1307,33 +1285,29 @@
                         body: JSON.stringify(data)
                     });
                     
-                    console.log('=== RÉPONSE WEBHOOK ===');
-                    console.log('Status Code:', response.status);
-                    console.log('Status OK:', response.ok);
+                    console.log('Response Status:', response.status);
                     
-                    // Lire la réponse complète
+                    // Parse webhook response
+                    let webhookResponse = null;
                     const responseText = await response.text();
-                    console.log('Réponse brute:', responseText);
                     
-                    let responseData = null;
                     if (responseText.trim()) {
                         try {
-                            responseData = JSON.parse(responseText);
-                            console.log('Réponse JSON parsée:', responseData);
+                            webhookResponse = JSON.parse(responseText);
+                            console.log('Webhook Response:', webhookResponse);
                         } catch (e) {
-                            console.log('Erreur parsing JSON:', e);
-                            console.log('Contenu non-JSON:', responseText);
+                            console.log('Non-JSON Response:', responseText);
                         }
-                    } else {
-                        console.log('Réponse vide du webhook');
                     }
                     
-                    // Gestion des réponses selon le status code
+                    // Handle responses based on webhook data
                     if (response.ok) {
-                        // SUCCESS - Status 200 - Nouveau membre
-                        submitBtn.innerHTML = '✅ Inscription confirmée !';
+                        // SUCCESS - New registration
+                        const successMessage = webhookResponse?.message || 'Welcome to Casa Deliziosa founding circle!';
+                        
+                        submitBtn.innerHTML = '✅ Registration Confirmed!';
                         submitBtn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
-                        showSuccessMessage();
+                        showWebhookMessage(successMessage, 'success');
                         
                         // Hide form after success
                         const formContainer = document.querySelector('.form-container');
@@ -1349,25 +1323,18 @@
                             submitBtn.innerHTML = originalContent;
                             submitBtn.style.background = 'linear-gradient(135deg, #8B0000 0%, #A52A2A 100%)';
                             submitBtn.disabled = false;
-                        }, 3000);
+                            formContainer.style.transform = '';
+                            formContainer.style.opacity = '';
+                            formContainer.style.pointerEvents = '';
+                        }, 5000);
                         
                     } else if (response.status === 400) {
-                        // DOUBLON DÉTECTÉ - Status 400
-                        let errorMessage = 'Cet email est déjà enregistré. Impossible de soumettre à nouveau.';
+                        // DUPLICATE DETECTED
+                        const errorMessage = webhookResponse?.message || 'This email is already registered. Unable to submit again.';
                         
-                        // Essayer de récupérer le message d'erreur du webhook
-                        try {
-                            const errorResult = await response.json();
-                            if (errorResult.message) {
-                                errorMessage = errorResult.message;
-                            }
-                        } catch (e) {
-                            console.log('Impossible de parser le message d\'erreur JSON');
-                        }
-                        
-                        submitBtn.innerHTML = '🚫 Email déjà enregistré';
+                        submitBtn.innerHTML = '🚫 Already Registered';
                         submitBtn.style.background = 'linear-gradient(135deg, #DC3545 0%, #C82333 100%)';
-                        showErrorMessage(errorMessage);
+                        showWebhookMessage(errorMessage, 'error');
                         
                         // Reset button after 5 seconds
                         setTimeout(() => {
@@ -1377,15 +1344,15 @@
                         }, 5000);
                         
                     } else {
-                        // AUTRE ERREUR SERVER (500, 404, etc.)
-                        throw new Error(`Erreur serveur: ${response.status}`);
+                        // OTHER SERVER ERROR
+                        throw new Error(`Server error: ${response.status}`);
                     }
                     
                 } catch (error) {
-                    console.error('Erreur soumission:', error);
-                    submitBtn.innerHTML = '⚠️ Erreur - Réessayer';
+                    console.error('Submission Error:', error);
+                    submitBtn.innerHTML = '⚠️ Error - Try Again';
                     submitBtn.style.background = 'linear-gradient(135deg, #DC3545 0%, #C82333 100%)';
-                    showErrorMessage('Erreur de connexion. Vérifiez votre réseau et réessayez.');
+                    showWebhookMessage('Connection error. Check your network and try again.', 'error');
                     
                     setTimeout(() => {
                         submitBtn.innerHTML = originalContent;

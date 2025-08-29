@@ -11,6 +11,377 @@
             box-sizing: border-box;
         }
 
+        // PREMIUM SUCCESS EXPERIENCE - AVANT-GARDE VISUAL
+        function replaceFormWithSuccessExperience() {
+            const formContainer = document.querySelector('.form-container');
+            
+            // Smooth transition out
+            formContainer.style.transition = 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+            formContainer.style.transform = 'translateY(-30px)';
+            formContainer.style.opacity = '0';
+            formContainer.style.filter = 'blur(10px)';
+            
+            setTimeout(() => {
+                formContainer.innerHTML = `
+                    <div class="success-experience" style="
+                        opacity: 0;
+                        transform: translateY(30px);
+                        animation: luxuryFadeIn 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                    ">
+                        <!-- Floating Particles Premium -->
+                        <div class="success-particles">
+                            <div class="success-particle" style="left: 10%; animation-delay: 0s;"></div>
+                            <div class="success-particle" style="left: 30%; animation-delay: 0.3s;"></div>
+                            <div class="success-particle" style="left: 50%; animation-delay: 0.6s;"></div>
+                            <div class="success-particle" style="left: 70%; animation-delay: 0.9s;"></div>
+                            <div class="success-particle" style="left: 90%; animation-delay: 1.2s;"></div>
+                        </div>
+
+                        <!-- Chef's Personal Message -->
+                        <div class="chef-signature-section" style="
+                            text-align: center;
+                            margin-bottom: 3rem;
+                            position: relative;
+                            z-index: 10;
+                        ">
+                            <div class="success-crown" style="
+                                font-size: 3rem;
+                                margin-bottom: 1rem;
+                                background: linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #FFD700 100%);
+                                -webkit-background-clip: text;
+                                background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                                animation: crownGlow 2s ease-in-out infinite alternate;
+                            ">👑</div>
+                            
+                            <h3 style="
+                                font-size: 2.2rem;
+                                color: #8B0000;
+                                margin-bottom: 1rem;
+                                font-weight: bold;
+                                text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.1);
+                            ">Founding Circle Confirmed</h3>
+                            
+                            <div class="chef-quote-premium" style="
+                                background: linear-gradient(135deg, rgba(139, 0, 0, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+                                padding: 2rem;
+                                border-radius: 20px;
+                                border: 2px solid rgba(139, 0, 0, 0.2);
+                                margin: 2rem 0;
+                                backdrop-filter: blur(15px);
+                                position: relative;
+                                overflow: hidden;
+                            ">
+                                <div class="quote-shimmer" style="
+                                    position: absolute;
+                                    top: 0;
+                                    left: -100%;
+                                    width: 100%;
+                                    height: 100%;
+                                    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+                                    animation: shimmer 3s infinite;
+                                "></div>
+                                
+                                <p style="
+                                    font-size: 1.3rem;
+                                    font-style: italic;
+                                    color: #2C1810;
+                                    line-height: 1.8;
+                                    margin: 0 0 1rem 0;
+                                    position: relative;
+                                    z-index: 2;
+                                ">"Your culinary journey with Casa Deliziosa begins now. Expect exclusive communications within 48 hours."</p>
+                                
+                                <div style="
+                                    font-size: 1.1rem;
+                                    color: #8B0000;
+                                    font-weight: bold;
+                                    position: relative;
+                                    z-index: 2;
+                                ">— Chef Juliano</div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Premium -->
+                        <div class="founding-timeline" style="
+                            background: rgba(255, 255, 255, 0.95);
+                            padding: 2.5rem;
+                            border-radius: 25px;
+                            margin-bottom: 3rem;
+                            box-shadow: 0 20px 50px rgba(139, 0, 0, 0.15);
+                            border-left: 5px solid #8B0000;
+                            position: relative;
+                            overflow: hidden;
+                        ">
+                            <div class="timeline-glow" style="
+                                position: absolute;
+                                top: -50%;
+                                left: -50%;
+                                width: 200%;
+                                height: 200%;
+                                background: radial-gradient(circle, rgba(139, 0, 0, 0.05) 0%, transparent 70%);
+                                animation: pulseGlow 4s ease-in-out infinite;
+                            "></div>
+                            
+                            <h4 style="
+                                font-size: 1.5rem;
+                                color: #8B0000;
+                                margin-bottom: 2rem;
+                                text-align: center;
+                                font-weight: bold;
+                                position: relative;
+                                z-index: 2;
+                            ">FOUNDING MEMBER TIMELINE</h4>
+                            
+                            <div class="timeline-steps" style="position: relative; z-index: 2;">
+                                <div class="timeline-step" style="
+                                    display: flex;
+                                    align-items: center;
+                                    margin-bottom: 1.5rem;
+                                    padding: 1rem;
+                                    background: rgba(139, 0, 0, 0.05);
+                                    border-radius: 15px;
+                                    transition: all 0.3s ease;
+                                " onmouseover="this.style.transform='translateX(10px)'" onmouseout="this.style.transform='translateX(0)'">
+                                    <div style="
+                                        width: 30px;
+                                        height: 30px;
+                                        background: linear-gradient(135deg, #8B0000, #A52A2A);
+                                        border-radius: 50%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        color: white;
+                                        font-weight: bold;
+                                        margin-right: 1rem;
+                                        box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+                                    ">1</div>
+                                    <div>
+                                        <strong style="color: #8B0000;">Exclusive menu preview</strong>
+                                        <span style="color: #8B4513; margin-left: 10px;">(within 72h)</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-step" style="
+                                    display: flex;
+                                    align-items: center;
+                                    margin-bottom: 1.5rem;
+                                    padding: 1rem;
+                                    background: rgba(139, 0, 0, 0.05);
+                                    border-radius: 15px;
+                                    transition: all 0.3s ease;
+                                " onmouseover="this.style.transform='translateX(10px)'" onmouseout="this.style.transform='translateX(0)'">
+                                    <div style="
+                                        width: 30px;
+                                        height: 30px;
+                                        background: linear-gradient(135deg, #8B0000, #A52A2A);
+                                        border-radius: 50%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        color: white;
+                                        font-weight: bold;
+                                        margin-right: 1rem;
+                                        box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+                                    ">2</div>
+                                    <div>
+                                        <strong style="color: #8B0000;">Priority event invitations</strong>
+                                        <span style="color: #8B4513; margin-left: 10px;">(first access)</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-step" style="
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 1rem;
+                                    background: rgba(139, 0, 0, 0.05);
+                                    border-radius: 15px;
+                                    transition: all 0.3s ease;
+                                " onmouseover="this.style.transform='translateX(10px)'" onmouseout="this.style.transform='translateX(0)'">
+                                    <div style="
+                                        width: 30px;
+                                        height: 30px;
+                                        background: linear-gradient(135deg, #8B0000, #A52A2A);
+                                        border-radius: 50%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        color: white;
+                                        font-weight: bold;
+                                        margin-right: 1rem;
+                                        box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+                                    ">3</div>
+                                    <div>
+                                        <strong style="color: #8B0000;">Direct chef communication</strong>
+                                        <span style="color: #8B4513; margin-left: 10px;">(exclusive channel)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Premium Action Buttons -->
+                        <div class="premium-actions" style="
+                            display: flex;
+                            gap: 1rem;
+                            justify-content: center;
+                            flex-wrap: wrap;
+                            margin-top: 2rem;
+                        ">
+                            <a href="#heritage-section" class="premium-btn" style="
+                                background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+                                color: #FDF5E6;
+                                padding: 1rem 2rem;
+                                border-radius: 25px;
+                                text-decoration: none;
+                                font-weight: bold;
+                                transition: all 0.4s ease;
+                                box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+                                position: relative;
+                                overflow: hidden;
+                            " onmouseover="
+                                this.style.transform='translateY(-5px)';
+                                this.style.boxShadow='0 15px 35px rgba(139, 69, 19, 0.4)';
+                            " onmouseout="
+                                this.style.transform='translateY(0)';
+                                this.style.boxShadow='0 8px 25px rgba(139, 69, 19, 0.3)';
+                            ">Discover Our Heritage</a>
+                            
+                            <a href="https://instagram.com/casadeliziosa" class="premium-btn" style="
+                                background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+                                color: #FDF5E6;
+                                padding: 1rem 2rem;
+                                border-radius: 25px;
+                                text-decoration: none;
+                                font-weight: bold;
+                                transition: all 0.4s ease;
+                                box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
+                                position: relative;
+                                overflow: hidden;
+                            " onmouseover="
+                                this.style.transform='translateY(-5px)';
+                                this.style.boxShadow='0 15px 35px rgba(139, 0, 0, 0.4)';
+                            " onmouseout="
+                                this.style.transform='translateY(0)';
+                                this.style.boxShadow='0 8px 25px rgba(139, 0, 0, 0.3)';
+                            ">Follow Our Journey</a>
+                            
+                            <a href="#" onclick="shareExperience()" class="premium-btn" style="
+                                background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+                                color: #2C1810;
+                                padding: 1rem 2rem;
+                                border-radius: 25px;
+                                text-decoration: none;
+                                font-weight: bold;
+                                transition: all 0.4s ease;
+                                box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+                                position: relative;
+                                overflow: hidden;
+                            " onmouseover="
+                                this.style.transform='translateY(-5px)';
+                                this.style.boxShadow='0 15px 35px rgba(255, 215, 0, 0.4)';
+                            " onmouseout="
+                                this.style.transform='translateY(0)';
+                                this.style.boxShadow='0 8px 25px rgba(255, 215, 0, 0.3)';
+                            ">Share Experience</a>
+                        </div>
+                    </div>
+                `;
+                
+                // Add premium CSS animations
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes luxuryFadeIn {
+                        0% {
+                            opacity: 0;
+                            transform: translateY(30px);
+                            filter: blur(10px);
+                        }
+                        100% {
+                            opacity: 1;
+                            transform: translateY(0);
+                            filter: blur(0);
+                        }
+                    }
+                    
+                    @keyframes crownGlow {
+                        0% { transform: scale(1) rotate(-2deg); }
+                        100% { transform: scale(1.1) rotate(2deg); }
+                    }
+                    
+                    @keyframes shimmer {
+                        0% { left: -100%; }
+                        100% { left: 100%; }
+                    }
+                    
+                    @keyframes pulseGlow {
+                        0%, 100% { opacity: 0.3; transform: scale(1); }
+                        50% { opacity: 0.6; transform: scale(1.05); }
+                    }
+                    
+                    .success-particle {
+                        position: absolute;
+                        width: 6px;
+                        height: 6px;
+                        background: linear-gradient(135deg, #8B0000, #FFD700);
+                        border-radius: 50%;
+                        animation: successFloat 4s ease-in-out infinite;
+                        opacity: 0.7;
+                    }
+                    
+                    @keyframes successFloat {
+                        0%, 100% { transform: translateY(0) rotate(0deg); }
+                        33% { transform: translateY(-20px) rotate(120deg); }
+                        66% { transform: translateY(-10px) rotate(240deg); }
+                    }
+                    
+                    .success-particles {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        pointer-events: none;
+                        z-index: 1;
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Smooth transition in
+                formContainer.style.transform = 'translateY(0)';
+                formContainer.style.opacity = '1';
+                formContainer.style.filter = 'blur(0)';
+                
+                // Add heritage section scroll function
+                const heritageLinks = document.querySelectorAll('a[href="#heritage-section"]');
+                heritageLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        document.querySelector('.heritage-section').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    });
+                });
+                
+            }, 600);
+        }
+
+        // Share Experience Function
+        function shareExperience() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Casa Deliziosa - Exclusive Founding Circle',
+                    text: 'I just joined the Casa Deliziosa founding circle! Where every dish tells a story.',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for desktop
+                const url = encodeURIComponent(window.location.href);
+                const text = encodeURIComponent('I just joined the Casa Deliziosa founding circle! Where every dish tells a story.');
+                window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+            }
+        }
+
         body {
             font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #FDF5E6 0%, #F5EBDC 50%, #FDF5E6 100%);
@@ -1309,24 +1680,10 @@
                         submitBtn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
                         showWebhookMessage(successMessage, 'success');
                         
-                        // Hide form after success
-                        const formContainer = document.querySelector('.form-container');
+                        // Replace form with premium success experience
                         setTimeout(() => {
-                            formContainer.style.transform = 'translateY(-20px)';
-                            formContainer.style.opacity = '0';
-                            formContainer.style.pointerEvents = 'none';
+                            replaceFormWithSuccessExperience();
                         }, 2000);
-                        
-                        // Reset after delay
-                        setTimeout(() => {
-                            form.reset();
-                            submitBtn.innerHTML = originalContent;
-                            submitBtn.style.background = 'linear-gradient(135deg, #8B0000 0%, #A52A2A 100%)';
-                            submitBtn.disabled = false;
-                            formContainer.style.transform = '';
-                            formContainer.style.opacity = '';
-                            formContainer.style.pointerEvents = '';
-                        }, 5000);
                         
                     } else if (response.status === 400) {
                         // DUPLICATE DETECTED
